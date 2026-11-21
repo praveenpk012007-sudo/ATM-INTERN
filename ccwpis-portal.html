@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predictive Cybercrime Intelligence Framework — Indian Cyber Crime Coordination Centre (I4C) | Ministry of Home Affairs, Government of India</title>
+  <meta name="description" content="Cybercrime Cash Withdrawal Prediction & Intervention System (CCWPIS) — AI-powered predictive intelligence framework under I4C, Ministry of Home Affairs, Government of India. Proactive Intervention. Faster Recovery. Safer Digital India." />
+  <meta name="keywords" content="Cybercrime, I4C, MHA, Government of India, NCRP, 1930, CFCFRMS, Cash Withdrawal Prediction, CCWPIS, Mule Account, Cyber Fraud, Predictive Analytics" />
+  <meta name="author" content="Indian Cyber Crime Coordination Centre (I4C), Ministry of Home Affairs" />
+  <meta property="og:title" content="Predictive Cybercrime Intelligence Framework — I4C, MHA" />
+  <meta property="og:description" content="National AI/ML framework for predictive cash-withdrawal hotspot identification and proactive interdiction." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM — Government of India Portal
+       ============================================================ */
+    :root {
+      --navy: #0b3d91;
+      --navy-dark: #002d62;
+      --navy-darker: #001a3a;
+      --saffron: #FF9933;
+      --saffron-dark: #e68a2e;
+      --green: #138808;
+      --green-dark: #0e6b06;
+      --white: #ffffff;
+      --grey-bg: #f4f4f4;
+      --grey-light: #e8e8e8;
+      --grey-mid: #999999;
+      --grey-border: #d0d0d0;
+      --text-dark: #1a1a1a;
+      --text-body: #333333;
+      --text-muted: #666666;
+      --utility-bg: #1a1a4d;
+      --danger: #c0392b;
+      --danger-dark: #a93226;
+      --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      --card-shadow-hover: 0 6px 20px rgba(0,0,0,0.14);
+      --transition: 0.25s ease;
+      --font-main: 'Noto Sans', 'Noto Sans Devanagari', Arial, Helvetica, sans-serif;
+      --radius: 4px;
+      --max-w: 1280px;
+    }
+
+    /* Dark Mode Variables */
+    [data-theme="dark"] {
+      --white: #1a1e2e;
+      --grey-bg: #111420;
+      --grey-light: #252a3a;
+      --grey-border: #3a3f52;
+      --text-dark: #e8e8e8;
+      --text-body: #c8c8d0;
+      --text-muted: #9a9ab0;
+      --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      --card-shadow-hover: 0 6px 20px rgba(0,0,0,0.45);
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 100%; }
+    body {
+      font-family: var(--font-main);
+      background: var(--grey-bg);
+      color: var(--text-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--navy); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--saffron); }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* Tricolor Strip */
+    .tricolor-strip {
+      height: 4px;
+      background: linear-gradient(90deg, var(--saffron) 33.33%, var(--white) 33.33%, var(--white) 66.66%, var(--green) 66.66%);
+    }
+    [data-theme="dark"] .tricolor-strip {
+      background: linear-gradient(90deg, var(--saffron) 33.33%, #ffffff 33.33%, #ffffff 66.66%, var(--green) 66.66%);
+    }
+
+    /* ============================================================
+       1. TOP UTILITY BAR
+       ============================================================ */
+    .utility-bar {
+      background: var(--utility-bg);
+      color: #d0d0e0;
+      font-size: 0.78rem;
+      padding: 5px 0;
+    }
+    .utility-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .utility-bar__left { font-weight: 500; letter-spacing: 0.3px; }
+    .utility-bar__right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .utility-bar__right a,
+    .utility-bar__right button {
+      color: #d0d0e0;
+      background: none;
+      border: none;
+      font: inherit;
+      font-size: 0.78rem;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 3px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .utility-bar__right a:hover,
+    .utility-bar__right button:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .utility-sep { color: #555577; }
+    .font-size-controls { display: flex; gap: 2px; align-items: center; }
+    .font-size-controls button {
+      width: 24px; height: 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; border-radius: 3px;
+    }
+    .theme-toggle-btn {
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* ============================================================
+       2. HEADER BAND
+       ============================================================ */
+    .header-band {
+      background: var(--white);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--grey-border);
+      transition: background var(--transition);
+    }
+    .header-band .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .emblem-svg {
+      width: 52px;
+      height: 68px;
+      flex-shrink: 0;
+      color: #1e293b;
+    }
+    [data-theme="dark"] .emblem-svg {
+      color: #e2e8f0;
+    }
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    .header-sub-hindi {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.25;
+      letter-spacing: 0.2px;
+    }
+    .header-sub-eng {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.25;
+      letter-spacing: 0.2px;
+    }
+    .header-main-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      margin-top: 2px;
+    }
+    [data-theme="dark"] .header-main-title {
+      color: #6ea8fe;
+    }
+    .header-sub-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #ea580c;
+      letter-spacing: 0.2px;
+      margin-top: 1px;
+    }
+    [data-theme="dark"] .header-sub-tag {
+      color: #fb923c;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .gov-badge-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      background: rgba(11, 61, 145, 0.03);
+      border: 1px solid var(--grey-border);
+      border-radius: 6px;
+    }
+    [data-theme="dark"] .gov-badge-box {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .gov-badge-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .badge-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+    .badge-sub {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+    }
+    .i4c-cluster {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: right;
+    }
+    .i4c-text-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      line-height: 1.2;
+    }
+    .i4c-abbr {
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: 0.5px;
+    }
+    [data-theme="dark"] .i4c-abbr {
+      color: #6ea8fe;
+    }
+    .i4c-name {
+      font-size: 0.64rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .i4c-motto {
+      font-size: 0.58rem;
+      font-style: italic;
+      color: var(--green);
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    /* ============================================================
+       3. NAVIGATION BAR
+       ============================================================ */
+    .main-nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .main-nav .container {
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 12px 16px;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .nav-menu > li { position: relative; }
+    .nav-menu > li > a {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: background var(--transition);
+      white-space: nowrap;
+    }
+    .nav-menu > li > a:hover,
+    .nav-menu > li > a:focus { background: rgba(255,255,255,0.12); color: #fff; }
+    .nav-menu > li.active > a { background: rgba(255,255,255,0.18); }
+    .nav-arrow { font-size: 0.6rem; margin-left: 2px; transition: transform var(--transition); }
+    .dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; background: var(--white); border: 1px solid var(--grey-border); box-shadow: var(--card-shadow-hover); z-index: 999; border-radius: 0 0 var(--radius) var(--radius); }
+    .dropdown a { display: block; padding: 10px 16px; font-size: 0.82rem; color: var(--text-body); border-bottom: 1px solid var(--grey-light); font-weight: 500; }
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { background: var(--grey-bg); color: var(--navy); }
+    .nav-menu > li:hover .dropdown,
+    .nav-menu > li:focus-within .dropdown { display: block; }
+    .nav-menu > li:hover .nav-arrow { transform: rotate(180deg); }
+    .helpline-link {
+      background: var(--danger) !important;
+      color: #fff !important;
+      font-weight: 700 !important;
+      animation: pulse-helpline 2s infinite;
+    }
+    @keyframes pulse-helpline {
+      0%, 100% { background: var(--danger) !important; }
+      50% { background: var(--danger-dark) !important; }
+    }
+
+    /* ============================================================
+       4. HERO / BANNER CAROUSEL
+       ============================================================ */
+    .hero-carousel {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-darker);
+      min-height: 420px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      min-height: 420px;
+    }
+    .carousel-slide::before {
+      content: '';
+      position: absolute; inset: 0;
+      z-index: 1;
+    }
+    .slide-1::before {
+      background: linear-gradient(135deg, rgba(11,61,145,0.92) 0%, rgba(0,45,98,0.85) 50%, rgba(19,136,8,0.6) 100%);
+    }
+    .slide-1 { background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%23001a3a" width="1200" height="500"/><circle cx="200" cy="150" r="80" fill="%230b3d91" opacity="0.3"/><circle cx="900" cy="300" r="120" fill="%23138808" opacity="0.15"/><rect x="400" y="100" width="400" height="300" rx="20" fill="%23002d62" opacity="0.3"/></svg>') center/cover; }
+    .slide-2::before {
+      background: linear-gradient(135deg, rgba(26,26,77,0.93) 0%, rgba(11,61,145,0.88) 100%);
+    }
+    .slide-2 { background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%231a1a4d" width="1200" height="500"/><path d="M0 400 Q300 200 600 350 T1200 300 V500 H0Z" fill="%230b3d91" opacity="0.25"/></svg>') center/cover; }
+    .slide-3::before {
+      background: linear-gradient(135deg, rgba(0,45,98,0.93) 0%, rgba(192,57,43,0.6) 100%);
+    }
+    .slide-3 { background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%23002d62" width="1200" height="500"/><polygon points="0,500 600,100 1200,500" fill="%23c0392b" opacity="0.15"/></svg>') center/cover; }
+
+    .slide-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      color: #fff;
+    }
+    .slide-content h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .slide-content p {
+      font-size: 1.05rem;
+      font-weight: 400;
+      opacity: 0.9;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .btn-gov {
+      display: inline-block;
+      padding: 12px 32px;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-gov:hover { background: var(--navy-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .btn-gov--saffron { background: var(--saffron); border-color: var(--saffron-dark); color: #1a1a1a; }
+    .btn-gov--saffron:hover { background: var(--saffron-dark); color: #1a1a1a; }
+    .btn-gov--danger { background: var(--danger); border-color: var(--danger-dark); }
+    .btn-gov--danger:hover { background: var(--danger-dark); }
+
+    .carousel-nav {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      gap: 10px;
+    }
+    .carousel-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      background: transparent;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .carousel-dot.active { background: #fff; }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      z-index: 5;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .carousel-arrow:hover { background: rgba(255,255,255,0.3); }
+    .carousel-arrow--prev { left: 20px; }
+    .carousel-arrow--next { right: 20px; }
+
+    .helpline-badge {
+      position: absolute;
+      top: 20px; right: 20px;
+      z-index: 5;
+      background: var(--danger);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 14px rgba(192,57,43,0.5);
+      animation: badge-glow 2s infinite;
+    }
+    @keyframes badge-glow {
+      0%, 100% { box-shadow: 0 4px 14px rgba(192,57,43,0.5); }
+      50% { box-shadow: 0 4px 24px rgba(192,57,43,0.8); }
+    }
+    .helpline-badge__icon { font-size: 1.3rem; }
+
+    /* ============================================================
+       5. QUICK STATS STRIP
+       ============================================================ */
+    .stats-strip {
+      background: var(--white);
+      padding: 36px 0;
+      border-bottom: 1px solid var(--grey-border);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--grey-border);
+      border-top: 3px solid var(--saffron);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .stat-card:nth-child(2) { border-top-color: var(--navy); }
+    .stat-card:nth-child(3) { border-top-color: var(--green); }
+    .stat-card:nth-child(4) { border-top-color: var(--danger); }
+    .stat-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-2px); }
+    .stat-card__icon {
+      width: 48px; height: 48px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .stat-card:nth-child(1) .stat-card__icon { background: #fff3e0; color: var(--saffron); }
+    .stat-card:nth-child(2) .stat-card__icon { background: #e3eeff; color: var(--navy); }
+    .stat-card:nth-child(3) .stat-card__icon { background: #e8f5e9; color: var(--green); }
+    .stat-card:nth-child(4) .stat-card__icon { background: #fce4e4; color: var(--danger); }
+    [data-theme="dark"] .stat-card:nth-child(1) .stat-card__icon { background: rgba(255,153,51,0.15); }
+    [data-theme="dark"] .stat-card:nth-child(2) .stat-card__icon { background: rgba(11,61,145,0.2); }
+    [data-theme="dark"] .stat-card:nth-child(3) .stat-card__icon { background: rgba(19,136,8,0.15); }
+    [data-theme="dark"] .stat-card:nth-child(4) .stat-card__icon { background: rgba(192,57,43,0.15); }
+    .stat-card__number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card__label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ============================================================
+       SECTION COMMON STYLES
+       ============================================================ */
+    .section {
+      padding: 56px 0;
+    }
+    .section--grey { background: var(--grey-bg); }
+    .section--white { background: var(--white); }
+    .section__header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section__header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      position: relative;
+      display: inline-block;
+    }
+    .section__header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--saffron), var(--green));
+      border-radius: 2px;
+    }
+    .section__header p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================================
+       6. ABOUT THE FRAMEWORK
+       ============================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .about-text h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    .about-text p {
+      margin-bottom: 14px;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .about-text ul { margin: 12px 0 16px 0; }
+    .about-text li {
+      padding: 6px 0 6px 24px;
+      position: relative;
+      font-size: 0.9rem;
+    }
+    .about-text li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+    .about-illustration {
+      background: var(--grey-bg);
+      border: 2px dashed var(--grey-border);
+      border-radius: 8px;
+      padding: 30px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .about-illustration svg { width: 100%; max-width: 360px; }
+    .about-illustration__caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       7. KEY DELIVERABLES
+       ============================================================ */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .deliverable-card {
+      background: var(--white);
+      border: 1px solid var(--grey-border);
+      border-top: 3px solid var(--saffron);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .deliverable-card:nth-child(2) { border-top-color: var(--navy); }
+    .deliverable-card:nth-child(3) { border-top-color: var(--green); }
+    .deliverable-card:nth-child(4) { border-top-color: var(--danger); }
+    .deliverable-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+    .deliverable-card__icon {
+      width: 56px; height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+    }
+    .deliverable-card:nth-child(1) .deliverable-card__icon { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+    .deliverable-card:nth-child(2) .deliverable-card__icon { background: linear-gradient(135deg, #e3eeff, #bbdefb); }
+    .deliverable-card:nth-child(3) .deliverable-card__icon { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+    .deliverable-card:nth-child(4) .deliverable-card__icon { background: linear-gradient(135deg, #fce4e4, #ffcdd2); }
+    [data-theme="dark"] .deliverable-card:nth-child(1) .deliverable-card__icon { background: linear-gradient(135deg, rgba(255,153,51,0.2), rgba(255,153,51,0.1)); }
+    [data-theme="dark"] .deliverable-card:nth-child(2) .deliverable-card__icon { background: linear-gradient(135deg, rgba(11,61,145,0.25), rgba(11,61,145,0.12)); }
+    [data-theme="dark"] .deliverable-card:nth-child(3) .deliverable-card__icon { background: linear-gradient(135deg, rgba(19,136,8,0.2), rgba(19,136,8,0.1)); }
+    [data-theme="dark"] .deliverable-card:nth-child(4) .deliverable-card__icon { background: linear-gradient(135deg, rgba(192,57,43,0.2), rgba(192,57,43,0.1)); }
+    .deliverable-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .deliverable-card p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       8. HOW IT WORKS (Process Flow)
+       ============================================================ */
+    .process-flow {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      padding: 20px 0;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      min-width: 160px;
+      max-width: 200px;
+      position: relative;
+      padding: 0 10px;
+    }
+    .process-step__circle {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 800; color: #fff;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 2;
+    }
+    .process-step:nth-child(1) .process-step__circle { background: var(--saffron); }
+    .process-step:nth-child(2) .process-step__circle { background: var(--navy); }
+    .process-step:nth-child(3) .process-step__circle { background: var(--green); }
+    .process-step:nth-child(4) .process-step__circle { background: var(--danger); }
+    .process-step:nth-child(5) .process-step__circle { background: var(--navy-dark); }
+    .process-step h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .process-step p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    /* Connector arrows */
+    .process-connector {
+      display: flex;
+      align-items: center;
+      padding-top: 18px;
+      color: var(--grey-mid);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       9. RISK HEATMAP PREVIEW
+       ============================================================ */
+    .heatmap-section {
+      background: var(--navy-darker);
+      color: #fff;
+      padding: 56px 0;
+    }
+    .heatmap-section .section__header h2 { color: #fff; }
+    .heatmap-section .section__header h2::after { background: linear-gradient(90deg, var(--saffron), #fff); }
+    .heatmap-section .section__header p { color: rgba(255,255,255,0.7); }
+    .heatmap-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+    .heatmap-map {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+    }
+    .heatmap-map svg { width: 100%; max-width: 480px; height: auto; }
+    .heatmap-legend {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .heatmap-legend h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.85rem;
+    }
+    .legend-color {
+      width: 20px; height: 20px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .legend-color--high { background: #dc2626; box-shadow: 0 0 8px rgba(220,38,38,0.5); }
+    .legend-color--medium { background: #ea580c; box-shadow: 0 0 8px rgba(234,88,12,0.5); }
+    .legend-color--low { background: #eab308; box-shadow: 0 0 8px rgba(234,179,8,0.5); }
+    .legend-color--none { background: #64748b; }
+    .heatmap-legend .btn-gov { margin-top: 20px; width: 100%; text-align: center; font-size: 0.82rem; padding: 10px; }
+
+    /* ============================================================
+       10. STAKEHOLDERS
+       ============================================================ */
+    .stakeholders-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+    .stakeholder-card {
+      background: var(--white);
+      border: 1px solid var(--grey-border);
+      border-radius: var(--radius);
+      padding: 24px 16px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .stakeholder-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-2px); }
+    .stakeholder-card__logo {
+      width: 52px; height: 52px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background: var(--grey-bg);
+      border: 2px solid var(--grey-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.55rem; color: var(--text-muted);
+      line-height: 1.1;
+      font-weight: 600;
+    }
+    .stakeholder-card h5 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       11. NEWS TICKER
+       ============================================================ */
+    .news-ticker {
+      background: var(--navy);
+      color: #fff;
+      padding: 10px 0;
+      overflow: hidden;
+    }
+    .news-ticker .container { display: flex; align-items: center; gap: 16px; }
+    .ticker-label {
+      background: var(--danger);
+      color: #fff;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      white-space: nowrap;
+      flex-shrink: 0;
+      animation: ticker-blink 1.5s infinite;
+    }
+    @keyframes ticker-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .ticker-track {
+      overflow: hidden;
+      flex: 1;
+      position: relative;
+      height: 24px;
+    }
+    .ticker-content {
+      display: flex;
+      gap: 60px;
+      animation: ticker-scroll 40s linear infinite;
+      white-space: nowrap;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .ticker-content span {
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ticker-content span::before {
+      content: '►';
+      color: var(--saffron);
+      font-size: 0.6rem;
+    }
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============================================================
+       12. RESOURCES
+       ============================================================ */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+    .resource-tile {
+      background: var(--white);
+      border: 1px solid var(--grey-border);
+      border-radius: var(--radius);
+      padding: 22px 16px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      cursor: pointer;
+    }
+    .resource-tile:hover {
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+      border-color: var(--navy);
+    }
+    .resource-tile__icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .resource-tile h5 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* ============================================================
+       13. FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--navy-darker);
+      color: rgba(255,255,255,0.8);
+      padding: 48px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-col h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: var(--saffron);
+    }
+    .footer-col p, .footer-col li {
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+    .footer-col ul li { padding: 4px 0; }
+    .footer-col a { color: rgba(255,255,255,0.7); }
+    .footer-col a:hover { color: var(--saffron); }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .footer-social a {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .footer-social a:hover { background: rgba(255,255,255,0.1); border-color: var(--saffron); color: var(--saffron); }
+    .newsletter-form {
+      display: flex;
+      margin-top: 12px;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 0.8rem;
+      font-family: var(--font-main);
+      outline: none;
+      border-right: none;
+      border-radius: var(--radius) 0 0 var(--radius);
+    }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .newsletter-form button {
+      padding: 8px 16px;
+      background: var(--saffron);
+      border: none;
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-family: var(--font-main);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      transition: background var(--transition);
+    }
+    .newsletter-form button:hover { background: var(--saffron-dark); }
+    .footer-bottom {
+      padding: 16px 0;
+      margin-top: 24px;
+    }
+    .footer-bottom .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.5); font-size: 0.72rem; }
+    .footer-bottom a:hover { color: var(--saffron); }
+    .footer-bottom__links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-disclaimer {
+      text-align: center;
+      padding: 12px 0;
+      background: rgba(0,0,0,0.2);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.2px;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .deliverables-grid { grid-template-columns: repeat(2, 1fr); }
+      .stakeholders-grid { grid-template-columns: repeat(3, 1fr); }
+      .resources-grid { grid-template-columns: repeat(3, 1fr); }
+      .heatmap-content { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .header-main-title { font-size: 1.15rem; }
+      .header-right { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .utility-bar__right { font-size: 0.72rem; }
+      .header-band .container { flex-direction: column; text-align: center; }
+      .header-left { justify-content: center; text-align: center; }
+      .header-text { text-align: center; }
+      .nav-toggle { display: block; }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--navy);
+      }
+      .nav-menu.open { display: flex; }
+      .nav-menu > li > a { padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .dropdown { position: static; box-shadow: none; border: none; background: var(--navy-dark); }
+      .dropdown a { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.05); padding-left: 36px; }
+      .dropdown a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .deliverables-grid { grid-template-columns: 1fr; }
+      .process-flow { flex-direction: column; align-items: center; }
+      .process-connector { transform: rotate(90deg); padding: 0; margin: -4px 0; }
+      .stakeholders-grid { grid-template-columns: repeat(2, 1fr); }
+      .resources-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .slide-content h2 { font-size: 1.4rem; }
+      .slide-content p { font-size: 0.9rem; }
+      .carousel-slide { padding: 40px 20px; min-height: 350px; }
+      .hero-carousel { min-height: 350px; }
+      .helpline-badge { top: 10px; right: 10px; padding: 8px 14px; font-size: 0.9rem; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .stakeholders-grid { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: 1fr; }
+      .utility-bar .container { flex-direction: column; text-align: center; }
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 44px; height: 44px;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .back-to-top.visible { display: flex; }
+    .back-to-top:hover { background: var(--navy-dark); transform: translateY(-2px); }
+
+    /* Skip to content */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      background: var(--navy);
+      color: #fff;
+      padding: 12px 24px;
+      z-index: 9999;
+      font-weight: 700;
+      transition: top 0.3s;
+    }
+    .skip-link:focus { top: 0; }
+  </style>
+</head>
+<body>
+  <!-- Skip Navigation (WCAG) -->
+  <a href="#main-content" class="skip-link" id="skip-nav">Skip to Main Content</a>
+
+  <!-- ============================================================
+       1. TOP UTILITY BAR
+       ============================================================ -->
+  <div class="utility-bar" role="banner">
+    <div class="container">
+      <div class="utility-bar__left">
+        Government of India | भारत सरकार
+      </div>
+      <div class="utility-bar__right">
+        <a href="#main-content">Skip to Main Content</a>
+        <span class="utility-sep">|</span>
+        <a href="#" aria-label="Screen Reader Access">Screen Reader Access</a>
+        <span class="utility-sep">|</span>
+        <div class="font-size-controls" role="group" aria-label="Font size controls">
+          <button onclick="changeFontSize(-1)" aria-label="Decrease font size" title="Decrease font size">A-</button>
+          <button onclick="changeFontSize(0)" aria-label="Default font size" title="Default font size" style="font-weight:400">A</button>
+          <button onclick="changeFontSize(1)" aria-label="Increase font size" title="Increase font size">A+</button>
+        </div>
+        <span class="utility-sep">|</span>
+        <button onclick="toggleLanguage()" id="lang-toggle" aria-label="Switch language">हिंदी</button>
+        <span class="utility-sep">|</span>
+        <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle dark/light mode">
+          <span id="theme-icon">🌙</span> <span id="theme-label">Dark</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tricolor Strip -->
+  <div class="tricolor-strip" role="presentation" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       2. HEADER BAND
+       ============================================================ -->
+  <header class="header-band">
+    <div class="container">
+      <div class="header-left">
+        <!-- Authentic Vector Ashoka Lion Capital (Emblem of India) -->
+        <svg viewBox="0 0 100 125" class="emblem-svg" aria-label="State Emblem of India - Ashoka Lions" role="img">
+          <g fill="currentColor">
+            <path d="M50 12 C44 12 40 16 39 21 C37 21 34 23 34 27 C34 30 36 32 37 34 C36 37 37 41 40 43 C41 47 44 50 50 51 C56 50 59 47 60 43 C63 41 64 37 63 34 C64 32 66 30 66 27 C66 23 63 21 61 21 C60 16 56 12 50 12 Z M47 22 C47 20 48 18 50 18 C52 18 53 20 53 22 C53 23 52 24 50 24 C48 24 47 23 47 22 Z M44 32 C44 30 46 29 48 29 C50 29 50 31 50 33 C49 34 46 34 44 32 Z M56 32 C54 34 51 34 50 33 C50 31 50 29 52 29 C54 29 56 30 56 32 Z M48 40 L52 40 L51 44 L49 44 Z" />
+            <path d="M28 24 C23 24 19 28 19 33 C17 34 15 37 16 41 C17 44 19 46 21 47 C22 51 25 54 31 55 C33 53 35 49 35 46 C32 44 30 40 30 36 C29 34 29 30 30 27 C29 25 28 24 28 24 Z" />
+            <path d="M72 24 C72 24 71 25 70 27 C71 30 71 34 70 36 C70 40 68 44 65 46 C65 49 67 53 69 55 C75 54 78 51 79 47 C81 46 83 44 84 41 C85 37 83 34 81 33 C81 28 77 24 72 24 Z" />
+            <rect x="20" y="58" width="60" height="7" rx="1.5" />
+            <ellipse cx="50" cy="71" rx="9" ry="9" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="50" cy="71" r="2.5" />
+            <line x1="50" y1="62" x2="50" y2="80" stroke="currentColor" stroke-width="1" />
+            <line x1="41" y1="71" x2="59" y2="71" stroke="currentColor" stroke-width="1" />
+            <line x1="43.6" y1="64.6" x2="56.4" y2="77.4" stroke="currentColor" stroke-width="0.8" />
+            <line x1="56.4" y1="64.6" x2="43.6" y2="77.4" stroke="currentColor" stroke-width="0.8" />
+            <path d="M26 68 Q28 66 31 68 L32 73 L26 73 Z" />
+            <path d="M74 68 Q72 66 69 68 L68 73 L74 73 Z" />
+            <rect x="16" y="80" width="68" height="5" rx="1" />
+            <rect x="12" y="87" width="76" height="4" rx="1" />
+            <text x="50" y="103" text-anchor="middle" font-size="10" font-weight="bold" font-family="'Noto Sans Devanagari', 'Inter', sans-serif" fill="currentColor">सत्यमेव जयते</text>
+          </g>
+        </svg>
+
+        <!-- Official Header Text Cluster Matching User Specification -->
+        <div class="header-text">
+          <div class="header-sub-hindi">भारत सरकार • गृह मंत्रालय</div>
+          <div class="header-sub-eng">Government of India • Ministry of Home Affairs</div>
+          <h1 class="header-main-title">Predictive Cybercrime Intelligence Framework</h1>
+          <div class="header-sub-tag">पूर्वानुमानित साइबर अपराध आसूचना ढांचा (I4C - MHA)</div>
+        </div>
+      </div>
+
+      <!-- Right: Authentic Badges & I4C Center Emblem -->
+      <div class="header-right">
+        <!-- Digital India Official Badge -->
+        <div class="gov-badge-box" title="Digital India - Power To Empower">
+          <svg viewBox="0 0 32 32" width="24" height="24" fill="none">
+            <circle cx="16" cy="16" r="14" fill="#0b3d91" />
+            <path d="M8 16 L14 10 L20 16 L14 22 Z" fill="#ff9933" />
+            <path d="M14 16 L20 10 L26 16 L20 22 Z" fill="#138808" />
+            <circle cx="16" cy="16" r="2.5" fill="#ffffff" />
+          </svg>
+          <div class="gov-badge-text">
+            <span class="badge-title" style="color:#0b3d91;">Digital India</span>
+            <span class="badge-sub">Power To Empower</span>
+          </div>
+        </div>
+
+        <!-- Azadi Ka Amrit Mahotsav Badge -->
+        <div class="gov-badge-box" title="75 Azadi Ka Amrit Mahotsav">
+          <svg viewBox="0 0 28 28" width="22" height="22" fill="none">
+            <circle cx="14" cy="14" r="12" stroke="#ff9933" stroke-width="2" stroke-dasharray="3 2" />
+            <circle cx="14" cy="14" r="8" stroke="#138808" stroke-width="2" />
+            <circle cx="14" cy="14" r="4" fill="#0b3d91" />
+          </svg>
+          <div class="gov-badge-text">
+            <span class="badge-title" style="color:#ff9933;">75+ आजादी का</span>
+            <span class="badge-sub" style="color:#138808; font-weight:700;">अमृत महोत्सव</span>
+          </div>
+        </div>
+
+        <!-- I4C Official Identity Cluster -->
+        <div class="i4c-cluster" title="Indian Cyber Crime Coordination Centre">
+          <div class="i4c-text-col">
+            <span class="i4c-abbr">I4C</span>
+            <span class="i4c-name">Indian Cyber Crime<br>Coordination Centre</span>
+            <span class="i4c-motto">सहवीर्यं करवावहै</span>
+          </div>
+          <!-- Segmented Circle I4C Icon -->
+          <svg viewBox="0 0 100 100" width="44" height="44" fill="none">
+            <path d="M 50 10 A 40 40 0 0 1 90 50" stroke="#0066cc" stroke-width="9" stroke-linecap="round" />
+            <path d="M 90 50 A 40 40 0 0 1 50 90" stroke="#f28c28" stroke-width="9" stroke-linecap="round" />
+            <path d="M 50 90 A 40 40 0 0 1 10 50" stroke="#10b981" stroke-width="9" stroke-linecap="round" />
+            <path d="M 10 50 A 40 40 0 0 1 50 10" stroke="#dc2626" stroke-width="9" stroke-linecap="round" />
+            <circle cx="50" cy="50" r="28" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+            <g transform="translate(34, 34) scale(0.65)">
+              <path d="M10 24 A8 8 0 0 1 24 12 A12 12 0 0 1 44 16 A8 8 0 0 1 48 24 L10 24 Z" fill="#0066cc" opacity="0.9" />
+              <circle cx="16" cy="34" r="3" fill="#f28c28" />
+              <circle cx="28" cy="36" r="3.5" fill="#0066cc" />
+              <circle cx="40" cy="33" r="3" fill="#10b981" />
+              <line x1="20" y1="24" x2="16" y2="34" stroke="#0066cc" stroke-width="1.5" />
+              <line x1="28" y1="24" x2="28" y2="36" stroke="#0066cc" stroke-width="1.5" />
+              <line x1="36" y1="24" x2="40" y2="33" stroke="#0066cc" stroke-width="1.5" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       3. NAVIGATION BAR
+       ============================================================ -->
+  <nav class="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+      <ul class="nav-menu" id="nav-menu">
+        <li class="active"><a href="#main-content">Home</a></li>
+        <li>
+          <a href="#about" aria-haspopup="true" aria-expanded="false">About I4C <span class="nav-arrow" aria-hidden="true">▼</span></a>
+          <ul class="dropdown" role="menu">
+            <li><a href="#about" role="menuitem">Vision & Mission</a></li>
+            <li><a href="#deliverables" role="menuitem">Objectives</a></li>
+            <li><a href="#deliverables" role="menuitem">Key Deliverables</a></li>
+            <li><a href="#" role="menuitem">FAQs</a></li>
+          </ul>
+        </li>
+        <li><a href="#">NCRP Portal</a></li>
+        <li><a href="#process">Predictive Analytics Engine</a></li>
+        <li><a href="#heatmap">Risk Heatmap Dashboard</a></li>
+        <li><a href="#">LEA Login</a></li>
+        <li><a href="#">Report Cybercrime</a></li>
+        <li><a href="tel:1930" class="helpline-link">Helpline 1930</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       4. HERO / BANNER CAROUSEL
+       ============================================================ -->
+  <section class="hero-carousel" id="main-content" aria-label="Hero banner carousel">
+    <!-- Helpline Badge -->
+    <a href="tel:1930" class="helpline-badge" aria-label="National Cyber Crime Helpline 1930">
+      <span class="helpline-badge__icon">📞</span>
+      <span>Helpline 1930</span>
+    </a>
+
+    <div class="carousel-track" id="carousel-track">
+      <!-- Slide 1 -->
+      <div class="carousel-slide slide-1" role="group" aria-label="Slide 1 of 3">
+        <div class="slide-content">
+          <h2>AI-Powered Prediction of Cash Withdrawal Hotspots</h2>
+          <p>Leveraging advanced machine learning models to identify and predict cybercrime-linked cash withdrawal patterns across India in real time.</p>
+          <a href="#heatmap" class="btn-gov">View Live Heatmap</a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-slide slide-2" role="group" aria-label="Slide 2 of 3">
+        <div class="slide-content">
+          <h2>8,000+ Complaints Handled Daily — Now With Predictive Intelligence</h2>
+          <p>Augmenting NCRP's massive complaint processing pipeline with predictive analytics to move from reactive response to proactive interception.</p>
+          <a href="#stats" class="btn-gov btn-gov--saffron">View Statistics</a>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-slide slide-3" role="group" aria-label="Slide 3 of 3">
+        <div class="slide-content">
+          <h2>Real-Time Alerts to LEAs & Banks for Faster Fund Blocking</h2>
+          <p>Automated alert system notifies law enforcement agencies and financial institutions within minutes to freeze mule accounts and block fraudulent transactions.</p>
+          <a href="#process" class="btn-gov btn-gov--danger">Learn How It Works</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-arrow carousel-arrow--prev" onclick="moveCarousel(-1)" aria-label="Previous slide">‹</button>
+    <button class="carousel-arrow carousel-arrow--next" onclick="moveCarousel(1)" aria-label="Next slide">›</button>
+    <div class="carousel-nav" role="tablist" aria-label="Carousel slide indicators">
+      <button class="carousel-dot active" onclick="goToSlide(0)" aria-label="Go to slide 1" role="tab" aria-selected="true"></button>
+      <button class="carousel-dot" onclick="goToSlide(1)" aria-label="Go to slide 2" role="tab" aria-selected="false"></button>
+      <button class="carousel-dot" onclick="goToSlide(2)" aria-label="Go to slide 3" role="tab" aria-selected="false"></button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. QUICK STATS STRIP
+       ============================================================ -->
+  <section class="stats-strip" id="stats" aria-label="Key statistics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card__icon" aria-hidden="true">📋</div>
+          <div class="stat-card__number" data-count="8000">8,000+</div>
+          <div class="stat-card__label">Daily Complaints Processed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon" aria-hidden="true">🗺️</div>
+          <div class="stat-card__number">36</div>
+          <div class="stat-card__label">States / UTs Covered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon" aria-hidden="true">🎯</div>
+          <div class="stat-card__number">92%</div>
+          <div class="stat-card__label">Avg. Prediction Accuracy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon" aria-hidden="true">🔔</div>
+          <div class="stat-card__number">1,247</div>
+          <div class="stat-card__label">Alerts Issued Today</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. ABOUT THE FRAMEWORK
+       ============================================================ -->
+  <section class="section section--white" id="about" aria-label="About the Framework">
+    <div class="container">
+      <div class="section__header">
+        <h2>About the Framework</h2>
+        <p>Understanding the Cybercrime Cash Withdrawal Prediction & Intervention System (CCWPIS)</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h3>From Reactive Response to Proactive Interception</h3>
+          <p>
+            The traditional approach to combating cybercrime-linked cash withdrawals has been inherently reactive — action is initiated only after a complaint is filed and funds have often already been siphoned. The <strong>CCWPIS</strong> framework fundamentally shifts this paradigm.
+          </p>
+          <p>
+            By leveraging AI/ML models trained on historical complaint data from the <strong>National Cybercrime Reporting Portal (NCRP)</strong>, the system predicts likely cash withdrawal hotspots — specific ATMs, bank branches, and geographic clusters — <em>before</em> fraudulent withdrawals occur.
+          </p>
+          <h3>I4C's Coordination Role</h3>
+          <p>
+            Operating under the Indian Cyber Crime Coordination Centre (I4C), Ministry of Home Affairs, CCWPIS serves as the predictive intelligence backbone integrated with the <strong>Citizen Financial Cyber Fraud Reporting and Management System (CFCFRMS)</strong>.
+          </p>
+          <ul>
+            <li>Real-time data ingestion from NCRP complaint pipeline</li>
+            <li>Integration with CFCFRMS for end-to-end fund tracing</li>
+            <li>Coordination with state/UT cyber cells and LEAs</li>
+            <li>Automated alerts to banks & financial institutions for proactive fund blocking</li>
+            <li>GIS-enabled risk heatmaps with drill-down analytics</li>
+          </ul>
+        </div>
+        <div class="about-illustration" aria-label="System architecture diagram placeholder">
+          <!-- Architecture Diagram Placeholder -->
+          <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CCWPIS Architecture Flow">
+            <title>CCWPIS Architecture Flow Diagram</title>
+            <!-- Background -->
+            <rect width="360" height="280" fill="none"/>
+            <!-- NCRP Box -->
+            <rect x="10" y="20" width="100" height="45" rx="6" fill="#FF9933" opacity="0.9"/>
+            <text x="60" y="40" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">NCRP Portal</text>
+            <text x="60" y="54" text-anchor="middle" fill="#fff" font-size="7">Complaint Data</text>
+            <!-- Arrow 1 -->
+            <line x1="110" y1="42" x2="140" y2="42" stroke="#999" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <!-- Data Ingestion -->
+            <rect x="140" y="20" width="100" height="45" rx="6" fill="#0b3d91" opacity="0.9"/>
+            <text x="190" y="40" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">Data Engine</text>
+            <text x="190" y="54" text-anchor="middle" fill="#fff" font-size="7">Ingestion & ETL</text>
+            <!-- Arrow 2 -->
+            <line x1="240" y1="42" x2="270" y2="42" stroke="#999" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <!-- ML Model -->
+            <rect x="250" y="10" width="100" height="55" rx="6" fill="#138808" opacity="0.9"/>
+            <text x="300" y="33" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">ML/AI Engine</text>
+            <text x="300" y="47" text-anchor="middle" fill="#fff" font-size="7">Prediction &</text>
+            <text x="300" y="57" text-anchor="middle" fill="#fff" font-size="7">Risk Scoring</text>
+            <!-- Arrow Down from ML -->
+            <line x1="300" y1="65" x2="300" y2="100" stroke="#999" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <!-- Heatmap -->
+            <rect x="240" y="100" width="110" height="45" rx="6" fill="#c0392b" opacity="0.85"/>
+            <text x="295" y="120" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">Risk Heatmap</text>
+            <text x="295" y="133" text-anchor="middle" fill="#fff" font-size="7">GIS Dashboard</text>
+            <!-- Arrow Left from Heatmap -->
+            <line x1="240" y1="122" x2="185" y2="122" stroke="#999" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <!-- Alerts -->
+            <rect x="70" y="100" width="115" height="45" rx="6" fill="#0b3d91" opacity="0.8"/>
+            <text x="128" y="120" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">Alert System</text>
+            <text x="128" y="133" text-anchor="middle" fill="#fff" font-size="7">SMS/Email/API</text>
+            <!-- Arrows from Alerts down -->
+            <line x1="100" y1="145" x2="60" y2="180" stroke="#999" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <line x1="128" y1="145" x2="175" y2="180" stroke="#999" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <line x1="155" y1="145" x2="290" y2="180" stroke="#999" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <!-- LEA Box -->
+            <rect x="10" y="180" width="100" height="40" rx="6" fill="#FF9933" opacity="0.7"/>
+            <text x="60" y="200" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">LEAs / Police</text>
+            <text x="60" y="212" text-anchor="middle" fill="#fff" font-size="7">Interception</text>
+            <!-- Bank Box -->
+            <rect x="125" y="180" width="100" height="40" rx="6" fill="#FF9933" opacity="0.7"/>
+            <text x="175" y="200" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Banks / FIs</text>
+            <text x="175" y="212" text-anchor="middle" fill="#fff" font-size="7">Fund Blocking</text>
+            <!-- CFCFRMS Box -->
+            <rect x="240" y="180" width="110" height="40" rx="6" fill="#FF9933" opacity="0.7"/>
+            <text x="295" y="200" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">CFCFRMS</text>
+            <text x="295" y="212" text-anchor="middle" fill="#fff" font-size="7">Fund Tracing</text>
+            <!-- Result -->
+            <rect x="80" y="240" width="200" height="32" rx="16" fill="#138808" opacity="0.85"/>
+            <text x="180" y="260" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">Proactive Interception ✓</text>
+            <!-- Arrows to Result -->
+            <line x1="60" y1="220" x2="140" y2="240" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowhead-green)"/>
+            <line x1="175" y1="220" x2="175" y2="240" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowhead-green)"/>
+            <line x1="295" y1="220" x2="220" y2="240" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrowhead-green)"/>
+            <!-- Arrowhead marker -->
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#999"/>
+              </marker>
+              <marker id="arrowhead-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#27ae60"/>
+              </marker>
+            </defs>
+          </svg>
+          <p class="about-illustration__caption">CCWPIS System Architecture — Complaint-to-Interception Pipeline</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. KEY DELIVERABLES
+       ============================================================ -->
+  <section class="section section--grey" id="deliverables" aria-label="Key Deliverables">
+    <div class="container">
+      <div class="section__header">
+        <h2>Key Deliverables</h2>
+        <p>Core components of the Predictive Cybercrime Intelligence Framework</p>
+      </div>
+      <div class="deliverables-grid">
+        <div class="deliverable-card">
+          <div class="deliverable-card__icon" aria-hidden="true">🧠</div>
+          <h4>Predictive Analytics Engine</h4>
+          <p>AI/ML-driven pattern detection and geospatial risk modelling across national complaint datasets for proactive threat identification.</p>
+        </div>
+        <div class="deliverable-card">
+          <div class="deliverable-card__icon" aria-hidden="true">🗺️</div>
+          <h4>Risk Heatmap Dashboard</h4>
+          <p>GIS-enabled real-time visualization of predicted cash withdrawal hotspots with drill-down filters by state, district, and time window.</p>
+        </div>
+        <div class="deliverable-card">
+          <div class="deliverable-card__icon" aria-hidden="true">🔐</div>
+          <h4>Law Enforcement Interface</h4>
+          <p>Secure, role-based portal for LEAs to access actionable alerts, intelligence reports, and digital evidence for rapid field deployment.</p>
+        </div>
+        <div class="deliverable-card">
+          <div class="deliverable-card__icon" aria-hidden="true">🔔</div>
+          <h4>Alert & Notification System</h4>
+          <p>Multi-channel real-time alert delivery via SMS, Email, API integrations, and dashboard notifications to relevant stakeholders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. HOW IT WORKS (Process Flow)
+       ============================================================ -->
+  <section class="section section--white" id="process" aria-label="How it works">
+    <div class="container">
+      <div class="section__header">
+        <h2>How It Works</h2>
+        <p>End-to-end predictive interception pipeline — from complaint to proactive action</p>
+      </div>
+      <div class="process-flow" role="list">
+        <div class="process-step" role="listitem">
+          <div class="process-step__circle">1</div>
+          <h4>Complaint Filed</h4>
+          <p>Victim reports cybercrime on NCRP Portal or via Helpline 1930</p>
+        </div>
+        <div class="process-connector" aria-hidden="true">→</div>
+        <div class="process-step" role="listitem">
+          <div class="process-step__circle">2</div>
+          <h4>Data Ingested</h4>
+          <p>Complaint data ingested, cleansed, and fed into the analytics pipeline</p>
+        </div>
+        <div class="process-connector" aria-hidden="true">→</div>
+        <div class="process-step" role="listitem">
+          <div class="process-step__circle">3</div>
+          <h4>ML Predicts Hotspot</h4>
+          <p>AI/ML models predict likely cash withdrawal locations and risk scores</p>
+        </div>
+        <div class="process-connector" aria-hidden="true">→</div>
+        <div class="process-step" role="listitem">
+          <div class="process-step__circle">4</div>
+          <h4>Alert Sent</h4>
+          <p>Real-time alerts dispatched to LEAs, banks, and financial institutions</p>
+        </div>
+        <div class="process-connector" aria-hidden="true">→</div>
+        <div class="process-step" role="listitem">
+          <div class="process-step__circle">5</div>
+          <h4>Proactive Interception</h4>
+          <p>LEAs intercept at predicted hotspot; banks block/freeze mule accounts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. RISK HEATMAP PREVIEW
+       ============================================================ -->
+  <section class="heatmap-section" id="heatmap" aria-label="Risk Heatmap Preview">
+    <div class="container">
+      <div class="section__header">
+        <h2>Risk Heatmap Preview</h2>
+        <p>Live risk visualization of predicted cash withdrawal hotspots across India</p>
+      </div>
+      <div class="heatmap-content">
+        <div class="heatmap-map" aria-label="India risk heatmap placeholder">
+          <!-- Simplified India SVG Map Placeholder -->
+          <svg viewBox="0 0 500 550" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simplified map of India showing risk zones">
+            <title>India Risk Heatmap</title>
+            <!-- India outline (simplified) -->
+            <path d="M250 30 C220 30 170 50 140 80 C110 110 80 150 70 190 C60 230 55 260 60 290 
+                      C65 320 58 350 55 370 C50 400 60 430 80 460 C100 490 130 510 170 520 
+                      C200 528 230 530 250 520 C260 515 270 510 280 510 C310 505 340 490 360 470 
+                      C380 450 390 420 395 390 C400 360 405 330 400 300 C395 270 400 240 410 210 
+                      C415 190 420 170 410 140 C400 110 380 80 350 60 C320 40 290 30 250 30Z" 
+                  fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+            <!-- High risk zones (Red >=80%) -->
+            <circle cx="200" cy="160" r="32" fill="#dc2626" opacity="0.65">
+              <animate attributeName="opacity" values="0.45;0.85;0.45" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="320" cy="280" r="28" fill="#dc2626" opacity="0.65">
+              <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="170" cy="350" r="24" fill="#dc2626" opacity="0.6">
+              <animate attributeName="opacity" values="0.35;0.75;0.35" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Medium risk zones (Orange 60-79%) -->
+            <circle cx="280" cy="180" r="28" fill="#ea580c" opacity="0.55">
+              <animate attributeName="opacity" values="0.35;0.7;0.35" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="250" cy="370" r="22" fill="#ea580c" opacity="0.5">
+              <animate attributeName="opacity" values="0.3;0.65;0.3" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="140" cy="250" r="20" fill="#ea580c" opacity="0.5"/>
+
+            <!-- Moderate risk zones (Yellow <60%) -->
+            <circle cx="300" cy="130" r="20" fill="#eab308" opacity="0.55"/>
+            <circle cx="190" cy="450" r="18" fill="#eab308" opacity="0.5"/>
+            <circle cx="350" cy="380" r="18" fill="#eab308" opacity="0.45"/>
+            <!-- Labels -->
+            <text x="198" y="165" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Delhi NCR (🔴 92%)</text>
+            <text x="320" y="285" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">Jamtara (🔴 96%)</text>
+            <text x="170" y="355" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">Mumbai (🔴 88%)</text>
+            <text x="280" y="185" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">UP Central (🟠 77%)</text>
+            <text x="250" y="375" text-anchor="middle" fill="#fff" font-size="8" font-weight="600">Telangana (🟠 74%)</text>
+          </svg>
+        </div>
+        <div class="heatmap-legend">
+          <h4>Risk-Wise Identification Engine</h4>
+          <div class="legend-item">
+            <div class="legend-color legend-color--high"></div>
+            <span><strong>🔴 High Risk (≥80%)</strong> — Immediate Interdiction & Debit Freeze</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color legend-color--medium"></div>
+            <span><strong>🟠 Medium Risk (60-79%)</strong> — Active LEA Surveillance & Patrol Watch</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color legend-color--low"></div>
+            <span><strong>🟡 Moderate Risk (&lt;60%)</strong> — Preventive Watchlist & Lead Tracking</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color legend-color--none"></div>
+            <span><strong>⚪ Baseline (0-39%)</strong> — Standard Monitoring Grid</span>
+          </div>
+          <a href="#" class="btn-gov" onclick="alert('Access restricted to authorized Law Enforcement Agency personnel. Please log in via LEA Login.'); return false;">
+            View Full Geospatial Heatmap →
+          </a>
+          <p style="font-size:0.72rem; color:rgba(255,255,255,0.5); margin-top:10px; text-align:center;">* Access restricted to authorized LEA personnel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. STAKEHOLDERS
+       ============================================================ -->
+  <section class="section section--grey" id="stakeholders" aria-label="Stakeholders">
+    <div class="container">
+      <div class="section__header">
+        <h2>Stakeholders & Partners</h2>
+        <p>Empowering Coordinated Action Across Agencies</p>
+      </div>
+      <div class="stakeholders-grid">
+        <div class="stakeholder-card">
+          <div class="stakeholder-card__logo">I4C</div>
+          <h5>Indian Cyber Crime Coordination Centre</h5>
+        </div>
+        <div class="stakeholder-card">
+          <div class="stakeholder-card__logo">State<br>Cyber</div>
+          <h5>State / UT Cyber Cells</h5>
+        </div>
+        <div class="stakeholder-card">
+          <div class="stakeholder-card__logo">RBI</div>
+          <h5>RBI, Banks & Financial Institutions</h5>
+        </div>
+        <div class="stakeholder-card">
+          <div class="stakeholder-card__logo">NPCI</div>
+          <h5>National Payments Corporation of India</h5>
+        </div>
+        <div class="stakeholder-card">
+          <div class="stakeholder-card__logo">LEA</div>
+          <h5>Law Enforcement Agencies</h5>
+        </div>
+        <div class="stakeholder-card">
+          <div class="stakeholder-card__logo">NCRP</div>
+          <h5>National Cybercrime Reporting Portal</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       11. NEWS TICKER
+       ============================================================ -->
+  <div class="news-ticker" role="marquee" aria-label="Latest updates and news">
+    <div class="container">
+      <div class="ticker-label">Latest Updates</div>
+      <div class="ticker-track">
+        <div class="ticker-content" id="ticker-content">
+          <span>Advisory: New modus operandi involving QR code scams detected — Advisory No. I4C/2026/47 issued</span>
+          <span>Meghalaya onboarded to the CCWPIS prediction framework — 36 States/UTs now covered</span>
+          <span>Press Release: I4C Annual Report 2025–26 published — Download from Resources section</span>
+          <span>System Upgrade: ML model v3.2 deployed with 4.7% improvement in prediction accuracy</span>
+          <span>RBI Circular: Banks mandated to integrate with CFCFRMS alert API by Q1 2027</span>
+          <span>Helpline 1930: 24×7 assistance for reporting cybercrimes — Do not delay!</span>
+          <!-- Duplicate for seamless loop -->
+          <span>Advisory: New modus operandi involving QR code scams detected — Advisory No. I4C/2026/47 issued</span>
+          <span>Meghalaya onboarded to the CCWPIS prediction framework — 36 States/UTs now covered</span>
+          <span>Press Release: I4C Annual Report 2025–26 published — Download from Resources section</span>
+          <span>System Upgrade: ML model v3.2 deployed with 4.7% improvement in prediction accuracy</span>
+          <span>RBI Circular: Banks mandated to integrate with CFCFRMS alert API by Q1 2027</span>
+          <span>Helpline 1930: 24×7 assistance for reporting cybercrimes — Do not delay!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       12. RESOURCES
+       ============================================================ -->
+  <section class="section section--white" id="resources" aria-label="Resources">
+    <div class="container">
+      <div class="section__header">
+        <h2>Resources</h2>
+        <p>Publications, advisories, and useful materials</p>
+      </div>
+      <div class="resources-grid">
+        <a href="#" class="resource-tile" aria-label="Cyber Safety Tips">
+          <div class="resource-tile__icon" aria-hidden="true">🛡️</div>
+          <h5>Cyber Safety Tips</h5>
+        </a>
+        <a href="#" class="resource-tile" aria-label="Annual Report">
+          <div class="resource-tile__icon" aria-hidden="true">📊</div>
+          <h5>Annual Report</h5>
+        </a>
+        <a href="#" class="resource-tile" aria-label="Right to Information">
+          <div class="resource-tile__icon" aria-hidden="true">📝</div>
+          <h5>RTI</h5>
+        </a>
+        <a href="#" class="resource-tile" aria-label="Tenders">
+          <div class="resource-tile__icon" aria-hidden="true">📄</div>
+          <h5>Tenders</h5>
+        </a>
+        <a href="#" class="resource-tile" aria-label="Circulars">
+          <div class="resource-tile__icon" aria-hidden="true">📣</div>
+          <h5>Circulars</h5>
+        </a>
+        <a href="#" class="resource-tile" aria-label="Press Releases">
+          <div class="resource-tile__icon" aria-hidden="true">📰</div>
+          <h5>Press Releases</h5>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       13. FOOTER
+       ============================================================ -->
+  <footer class="site-footer" id="contact" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1 -->
+        <div class="footer-col">
+          <h4>About I4C</h4>
+          <p>The Indian Cyber Crime Coordination Centre (I4C) was established by the Ministry of Home Affairs to provide a framework for law enforcement agencies to deal with cybercrimes in a coordinated and comprehensive manner.</p>
+          <ul style="margin-top:12px">
+            <li><a href="#">Vision & Mission</a></li>
+            <li><a href="#">Organization Chart</a></li>
+            <li><a href="#">Annual Reports</a></li>
+          </ul>
+        </div>
+        <!-- Column 2 -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="https://cybercrime.gov.in" target="_blank" rel="noopener">National Cybercrime Reporting Portal (NCRP)</a></li>
+            <li><a href="#">Cyber Dost</a></li>
+            <li><a href="https://www.mha.gov.in" target="_blank" rel="noopener">Ministry of Home Affairs</a></li>
+            <li><a href="https://www.digitalindia.gov.in" target="_blank" rel="noopener">Digital India</a></li>
+            <li><a href="https://data.gov.in" target="_blank" rel="noopener">Data.gov.in</a></li>
+            <li><a href="https://www.india.gov.in" target="_blank" rel="noopener">National Portal of India</a></li>
+          </ul>
+        </div>
+        <!-- Column 3 -->
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <p><strong>Indian Cyber Crime Coordination Centre</strong></p>
+          <p>Ministry of Home Affairs<br>
+          Block No. 3, CGO Complex,<br>
+          Lodhi Road, New Delhi — 110003</p>
+          <p style="margin-top:10px">
+            <strong>National Helpline:</strong> <a href="tel:1930" style="color:var(--saffron);font-weight:700">1930</a> (Toll Free, 24×7)
+          </p>
+          <p><strong>Email:</strong> <a href="mailto:ccwpis-support@i4c.mha.gov.in">ccwpis-support@i4c.mha.gov.in</a></p>
+        </div>
+        <!-- Column 4 -->
+        <div class="footer-col">
+          <h4>Stay Connected</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter / X">𝕏</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">📷</a>
+          </div>
+          <p style="margin-top:16px; font-size:0.82rem; font-weight:600;">Newsletter</p>
+          <p style="font-size:0.78rem; margin-bottom:8px;">Subscribe for updates and advisories</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <input type="email" placeholder="Enter your email" required aria-label="Email address for newsletter">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2024–2026 Government of India | Indian Cyber Crime Coordination Centre (I4C), Ministry of Home Affairs</span>
+        <div class="footer-bottom__links">
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Accessibility Statement</a>
+          <a href="#">Sitemap</a>
+          <span>Last Updated: 21-Sep-2026</span>
+          <span>Visitors: <span id="visitor-count">12,48,637</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-disclaimer">
+      <div class="container">
+        This is the official website of the Indian Cyber Crime Coordination Centre (I4C), Ministry of Home Affairs, Government of India. | 
+        Site best viewed in 1024×768 resolution and above in latest versions of Chrome, Firefox, Safari & Edge.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+  <!-- ============================================================
+       JAVASCRIPT — Carousel, Dark Mode, Font Size, Nav Toggle, Ticker
+       ============================================================ -->
+  <script>
+    // ── Carousel ──
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const track = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+    let autoplayInterval;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentSlide);
+        d.setAttribute('aria-selected', i === currentSlide ? 'true' : 'false');
+      });
+    }
+
+    function moveCarousel(dir) {
+      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+      updateCarousel();
+      resetAutoplay();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+      resetAutoplay();
+    }
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }, 5000);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayInterval);
+      startAutoplay();
+    }
+
+    startAutoplay();
+
+    // ── Dark / Light Mode ──
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+      document.getElementById('theme-label').textContent = isDark ? 'Dark' : 'Light';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+
+    // Restore saved theme
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('theme-icon').textContent = '☀️';
+        document.getElementById('theme-label').textContent = 'Light';
+      }
+    })();
+
+    // ── Font Size ──
+    let fontLevel = 0;
+    function changeFontSize(dir) {
+      if (dir === 0) { fontLevel = 0; }
+      else { fontLevel = Math.max(-2, Math.min(3, fontLevel + dir)); }
+      document.documentElement.style.fontSize = (100 + fontLevel * 8) + '%';
+    }
+
+    // ── Language Toggle (placeholder) ──
+    function toggleLanguage() {
+      const btn = document.getElementById('lang-toggle');
+      if (btn.textContent.trim() === 'हिंदी') {
+        btn.textContent = 'English';
+      } else {
+        btn.textContent = 'हिंदी';
+      }
+    }
+
+    // ── Mobile Nav Toggle ──
+    function toggleNav() {
+      const menu = document.getElementById('nav-menu');
+      const toggle = document.querySelector('.nav-toggle');
+      const isOpen = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    }
+
+    // ── Back to Top ──
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // ── Keyboard nav for carousel ──
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') moveCarousel(-1);
+      if (e.key === 'ArrowRight') moveCarousel(1);
+    });
+
+    // ── Ticker seamless scroll fix ──
+    // Duplicate content for seamless loop is already in HTML
+  </script>
+</body>
+</html>
